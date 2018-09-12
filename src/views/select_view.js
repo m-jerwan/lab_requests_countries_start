@@ -5,11 +5,18 @@ const SelectView = function (htmlElement) {
 }
 
 SelectView.prototype.bindEvents = function () {
-    PubSub.subscribe('Countries:names-ready', (event) => {
-        // PubSub.subscribe('Countries:native-names-ready', (event) =>{
+    // PubSub.subscribe('Countries:names-ready', (event) => {
+        PubSub.subscribe('Countries:native-names-ready', (event) =>{
         this.makeDropdown(event.detail);
     });
+
+    this.htmlElement.addEventListener('change', (event) => {
+        const selectedIndex = event.target.value;
+        PubSub.publish('SelectView:change', selectedIndex);
+    })
 }
+
+
 
 SelectView.prototype.makeDropdown = function (countriesNames) {
     countriesNames.forEach((name, index) => {

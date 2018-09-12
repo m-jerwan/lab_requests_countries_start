@@ -6,11 +6,15 @@ const Countries = function(){
 }
 
 Countries.prototype.bindEvents= function(){
-    this.getAllCountriesFromApi();
+    this.getAllCountriesFromApiAndPublish();
+    
+    PubSub.subscribe('SelectView:change', (event) => {
+        console.log(event.detail)
+    })
 };
 
 
-Countries.prototype.getAllCountriesFromApi = function(){
+Countries.prototype.getAllCountriesFromApiAndPublish = function(){
     const request = new Request('https://restcountries.eu/rest/v2/all');
     request.get((data) => {
         this.countriesData = data;
