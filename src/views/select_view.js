@@ -5,8 +5,8 @@ const SelectView = function (htmlElement) {
 }
 
 SelectView.prototype.bindEvents = function () {
-    // PubSub.subscribe('Countries:names-ready', (event) => {
-        PubSub.subscribe('Countries:native-names-ready', (event) =>{
+    PubSub.subscribe('Countries:names-ready', (event) => {
+        // PubSub.subscribe('Countries:native-names-ready', (event) =>{
         this.makeDropdown(event.detail);
     });
 

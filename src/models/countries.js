@@ -9,7 +9,9 @@ Countries.prototype.bindEvents= function(){
     this.getAllCountriesFromApiAndPublish();
     
     PubSub.subscribe('SelectView:change', (event) => {
-        console.log(event.detail)
+        const indexIwant = event.detail;
+        const countryIwant = this.countriesData[indexIwant];
+        PubSub.publish('Countries:country-ready', countryIwant);
     })
 };
 
