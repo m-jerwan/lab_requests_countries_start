@@ -1,0 +1,15 @@
+body{
+    margin: auto;
+    margin-top: 7em;
+    width:80%;
+    font-family: 'Playfair Display', serif;
+}
+
+#countries:hover{
+    opacity: 0.0;
+}
+
+
+img{
+    max-width: 30%;
+}

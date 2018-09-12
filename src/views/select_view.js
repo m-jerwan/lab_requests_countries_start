@@ -22,6 +22,9 @@ SelectView.prototype.makeDropdown = function (countriesNames) {
     countriesNames.forEach((name, index) => {
         const option = document.createElement('option');
         option.textContent = name;
+        if (name === "Poland"){
+            option.selected = "selected";
+        }
         option.value = index;
         this.htmlElement.appendChild(option);
     });
